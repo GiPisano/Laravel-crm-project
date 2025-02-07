@@ -13,9 +13,10 @@ class CompanySeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 1; $i <= 10; $i++) {
+            $companyName = $faker->company;
             Company::create([
                 'name' => $faker->company,
-                'logo' => $faker->imageUrl(200, 200, 'business'),
+                'logo' => "https://api.dicebear.com/7.x/identicon/svg?seed=" . urlencode($companyName),
                 'vat_number' => $faker->numerify('###########'), // 11 cifre
             ]);
         }
