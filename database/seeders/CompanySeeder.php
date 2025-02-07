@@ -15,7 +15,7 @@ class CompanySeeder extends Seeder
         for ($i = 1; $i <= 10; $i++) {
             Company::create([
                 'name' => $faker->company,
-                'logo' => 'logos/default.png',
+                'logo' => $faker->imageUrl(200, 200, 'business'),
                 'vat_number' => $faker->numerify('###########'), // 11 cifre
             ]);
         }
