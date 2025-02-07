@@ -21,7 +21,13 @@
             <li class="mb-3"><a href="{{ route('dashboard') }}" class="hover:underline">🏠 Dashboard</a></li>
             <li class="mb-3"><a href="{{ route('companies.index') }}" class="hover:underline">🏢 Aziende</a></li>
             <li class="mb-3"><a href="{{ route('employees.index') }}" class="hover:underline">👥 Impiegati</a></li>
-            <li class="mt-10"><a href="{{ route('logout') }}" class="text-red-400 hover:underline">🚪 Logout</a></li>
+            <li class="mt-10">
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="text-red-400 hover:underline">🚪 Logout</button>
+                </form>
+            </li>
+
         </ul>
     </aside>
 
