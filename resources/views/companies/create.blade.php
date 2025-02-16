@@ -1,7 +1,7 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">➕ Aggiungi Azienda</h2>
-    </x-slot>
+@extends('layouts.app')
+
+@section('content')
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">➕ Aggiungi Azienda</h2>
 
     <form method="POST" action="{{ route('companies.store') }}" enctype="multipart/form-data"
         class="bg-white p-6 rounded shadow-md">
@@ -19,8 +19,7 @@
             <input type="text" name="vat_number" id="vat_number"
                 class="w-full border rounded p-2 focus:ring focus:ring-blue-300" required maxlength="11"
                 oninput="validateVat(this)">
-            <p id="vat_error" class="text-red-500 text-sm hidden">La Partita IVA deve contenere esattamente 11 cifre.
-            </p>
+            <p id="vat_error" class="text-red-500 text-sm hidden">La Partita IVA deve contenere esattamente 11 cifre.</p>
         </div>
 
         {{-- Logo Upload con Preview --}}
@@ -69,4 +68,4 @@
             }
         }
     </script>
-</x-app-layout>
+@endsection

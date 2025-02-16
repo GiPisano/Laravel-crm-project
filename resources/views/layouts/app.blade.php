@@ -33,7 +33,7 @@
 
     {{-- Contenuto Principale (che scorre) --}}
     <main class="flex-1 p-4 overflow-y-auto">
-        {{ $slot }}
+        @yield('content')
     </main>
 
 </body>

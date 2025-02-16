@@ -1,8 +1,10 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">📂 Aziende</h2>
-    </x-slot>
+@extends('layouts.app')
 
+@section('header')
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">📂 Aziende</h2>
+@endsection
+
+@section('content')
     @if (session('success'))
         <div class="bg-green-500 text-white p-3 mb-4 rounded shadow-md">{{ session('success') }}</div>
     @endif
@@ -51,4 +53,4 @@
     </table>
 
     <div class="mt-4">{{ $companies->links() }}</div>
-</x-app-layout>
+@endsection

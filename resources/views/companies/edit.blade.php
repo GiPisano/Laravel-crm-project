@@ -1,18 +1,18 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">✏️ Modifica Azienda</h2>
-    </x-slot>
+@extends('layouts.app')
+
+@section('content')
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">✏️ Modifica Azienda</h2>
 
     <form method="POST" action="{{ route('companies.update', $company) }}" enctype="multipart/form-data"
-        class=" bg-white p-6 rounded-lg shadow">
+        class="bg-white p-6 rounded-lg shadow">
         @csrf
         @method('PUT')
 
         {{-- Name --}}
         <div>
             <label class="block font-bold mb-1">Nome</label>
-            <input type="text" name="name" value="{{ old('name', $company->name) }}"
-                class="w-full border rounded p-2" required>
+            <input type="text" name="name" value="{{ old('name', $company->name) }}" class="w-full border rounded p-2"
+                required>
         </div>
 
         {{-- VAT Number --}}
@@ -20,19 +20,16 @@
             <label class="block font-bold mb-1">Partita IVA</label>
             <input type="text" name="vat_number" value="{{ old('vat_number', $company->vat_number) }}"
                 class="w-full border rounded p-2 vat-input" required>
-            <p class="text-red-500 text-sm mt-1 hidden vat-error">La Partita IVA deve contenere esattamente 11 cifre.
-            </p>
+            <p class="text-red-500 text-sm mt-1 hidden vat-error">La Partita IVA deve contenere esattamente 11 cifre.</p>
         </div>
 
         {{-- Logo Preview & Upload --}}
         <div class="mt-4">
             <label class="block font-bold mb-1">Logo</label>
             @if ($company->logo && !str_contains($company->logo, 'dicebear.com'))
-                <!-- Se il logo è stato caricato manualmente, mostriamo quello -->
-                <img src="{{ asset('storage/' . $company->logo) }}"
-                    class="h-16 w-16 object-cover rounded-md border shadow" alt="Company Logo">
+                <img src="{{ asset('storage/' . $company->logo) }}" class="h-16 w-16 object-cover rounded-md border shadow"
+                    alt="Company Logo">
             @else
-                <!-- Altrimenti usiamo DiceBear -->
                 <img src="https://api.dicebear.com/7.x/identicon/svg?seed={{ urlencode($company->name) }}"
                     class="h-16 w-16 object-cover rounded-md border shadow" alt="Company Placeholder Logo">
             @endif
@@ -41,8 +38,7 @@
 
         {{-- Buttons --}}
         <div class="mt-6 flex items-center gap-4">
-            <button type="submit"
-                class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600 transition">
+            <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded shadow hover:bg-green-600 transition">
                 💾 Salva
             </button>
             <a href="{{ route('companies.index') }}" class="text-gray-500 hover:underline">Annulla</a>
@@ -66,4 +62,4 @@
             });
         });
     </script>
-</x-app-layout>
+@endsection
