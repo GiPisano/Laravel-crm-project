@@ -35,6 +35,10 @@
                         @endif
                     </td>
                     <td class="p-3 flex items-center justify-center gap-2">
+                        <a href="{{ route('companies.show', $company) }}"
+                            class="px-3 py-2 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition flex items-center gap-1">
+                            👁️ <span class="hidden sm:inline">View</span>
+                        </a>
                         <a href="{{ route('companies.edit', $company) }}"
                             class="px-3 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600 transition flex items-center gap-1">
                             ✏️ <span class="hidden sm:inline">Edit</span>

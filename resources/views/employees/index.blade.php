@@ -14,11 +14,22 @@
         <tbody>
             @foreach ($employees as $employee)
                 <tr>
-                    <td class="border border-gray-300 px-4 py-2">{{ $employee->name }}</td>
+                    <td class="border border-gray-300 px-4 py-2">{{ $employee->first_name }} {{ $employee->last_name }}</td>
                     <td class="border border-gray-300 px-4 py-2">{{ $employee->email }}</td>
-                    <td class="border border-gray-300 px-4 py-2">{{ $employee->company->name ?? 'N/A' }}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        @if ($employee->company)
+                            <a href="{{ route('companies.show', $employee->company) }}"
+                                class="text-blue-500 hover:underline">
+                                {{ $employee->company->name }}
+                            </a>
+                        @else
+                            N/A
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <div class="mt-4">{{ $employees->links() }}</div>
 @endsection
